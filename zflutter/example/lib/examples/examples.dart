@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'package:z_flutter_example/examples/z_fighting.dart';
 
@@ -9,7 +8,6 @@ import 'package:zflutter/zflutter.dart';
 import '../flutter_widget.dart';
 import '../spin.dart';
 import 'device/device.dart';
-import 'device/modal_bottom_sheet.dart';
 
 import 'dice/dice.dart';
 import 'dude.dart';
@@ -41,30 +39,6 @@ class Examples {
     builder: (_) => OnTheGo(),
   );
 
-  static final Example iphone = Example(
-    title: 'iPhone',
-    route: '/iphone',
-    builder: (_) => ZDragDetector(builder: (context, controller) {
-      return ZIllustration(
-        zoom: 1.5,
-        children: [
-          ZPositioned(
-            rotate: controller.rotate,
-            child: Device(
-              child: CupertinoTabView(
-                onGenerateRoute: (settings) {
-                  return MaterialWithModalsPageRoute(
-                      settings: settings,
-                      builder: (context) => ModalBottomSheetExample());
-                },
-              ),
-            ),
-          )
-        ],
-      );
-    }),
-  );
-
   static final Example flutterLogo = Example(
       title: 'Flutter Logo',
       route: '/logo',
@@ -87,7 +61,6 @@ class Examples {
 
   static List<Example> get list => [
         onTheGo,
-        iphone,
         flutterLogo,
         dice,
     widgetHitTest3D
